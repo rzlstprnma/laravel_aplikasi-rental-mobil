@@ -14,15 +14,14 @@
 
  <p>Aplikasi ini dibuat menggunakan Framework Laravel 5.* dengan tambahan package-package lain, seperti : 1) SweetAlert 2) Datatables, 3) Dll.</p>
 
-<b>Cara menjalankan Aplikasi :</b>
-
-<li> Simpan Project di /htdocs (kalau pake xampp)</li>
-
-<li> import database (pr_rentcar.sql) </li>
-
-<li>di dalam directory project buka terminal, ketikan "php artisan serve"</li>
-
-<li>buka browser, ketikan url "localhost:8000"</li>
+Cara menjalankan Aplikasi : 
+- Simpan Project di /htdocs (kalau pake xampp)
+- import database (pr_rentcar.sql)
+- buka folder project, copykan .env.example, menjadi .env
+- isi DB_DATABASE, DB_USERNAME, DB_PASSWORD, sesuaikan dengan settingan database kamu
+- di dalam directory project buka terminal, ketikan "php artisan key:generate"
+- di dalam directory project buka terminal, ketikan "php artisan serve"
+- buka browser, ketikan url "localhost:8000"
 			
 Akun Created : 			
 username : admin@mail.com	
