@@ -19,15 +19,8 @@ class bookingController extends Controller
     public function index()
     {
         $clients = Client::all();
-        $cars = Car::all();
-        return view('bookings.index', compact('cars', 'clients'));
-    }
-
-    public function booking($slug)
-    {
-        $client = Client::where('slug', $slug)->first();
         $cars = Car::where('available', 1)->get();
-        return view('bookings.create', compact('client', 'cars'));
+        return view('bookings.index', compact('cars', 'clients'));
     }
 
     /**
@@ -48,8 +41,14 @@ class bookingController extends Controller
 
         $order_date = $request->order_date;
         $duration = $request->duration;
+
+        // return date / tanggal kembali, dimana menghitung dari tanggal order + durasi peminjaman
         $return_date = date('Y-m-d', strtotime('+'.$duration.'days', strtotime($order_date)));
+
+        // harga total => harga mobil/day * durasi peminjaman
         $total_price = $car->price * $duration;
+
+        // dp => 30% dari total harga
         $dp = $total_price * 30 / 100;
 
         return view('bookings.confirm', compact('client', 'car', 'return_date', 'data', 'total_price', 'dp'));
@@ -100,6 +99,7 @@ class bookingController extends Controller
         $car = Car::find($request->car_id);
         $car->available = '0';
         $car->save();
+        
         return redirect('/home');
 
     }
