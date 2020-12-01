@@ -25,4 +25,10 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function logout(){
+        auth()->logout();
+        // redirect to homepage
+        return redirect('/login');
+    }
 }
